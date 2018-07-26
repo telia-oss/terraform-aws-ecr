@@ -47,7 +47,7 @@ resource "aws_ecr_lifecycle_policy" "keep-last-N" {
             "selection": {
                 "tagStatus": "any",
                 "countType": "imageCountMoreThan",
-                "countNumber": "${var.lifecycle_count_number}"
+                "countNumber": ${var.lifecycle_count_number}
             },
             "action": {
                 "type": "expire"
