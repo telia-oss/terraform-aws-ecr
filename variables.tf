@@ -8,7 +8,7 @@ variable "name_prefix" {
 
 variable "lifecycle_count_number" {
   description = "The max number of images to keep in the repository before expiring the oldest"
-  default     = "100"
+  default     = 100
 }
 
 variable "tags" {
