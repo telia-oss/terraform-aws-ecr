@@ -6,7 +6,7 @@ variable "name_prefix" {
   description = "A prefix used for naming resources."
 }
 
-variable "lifecycle_count_number" {
+variable "max_images_retained" {
   description = "The max number of images to keep in the repository before expiring the oldest"
   default     = 100
 }

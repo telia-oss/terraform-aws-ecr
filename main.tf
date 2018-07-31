@@ -2,16 +2,16 @@
 # Resources
 # ------------------------------------------------------------------------------
 
-resource "aws_ecr_repository" "ecr-repo" {
+resource "aws_ecr_repository" "ecr_repo" {
   name = "${var.name_prefix}"
 }
 
-resource "aws_ecr_repository_policy" "ecr-policy" {
-  repository = "${aws_ecr_repository.ecr-repo.id}"
-  policy     = "${data.aws_iam_policy_document.ecr-policy-doc.json}"
+resource "aws_ecr_repository_policy" "ecr_policy" {
+  repository = "${aws_ecr_repository.ecr_repo.id}"
+  policy     = "${data.aws_iam_policy_document.ecr_policy_doc.json}"
 }
 
-data "aws_iam_policy_document" "ecr-policy-doc" {
+data "aws_iam_policy_document" "ecr_policy_doc" {
   "statement" {
     effect = "Allow"
 
@@ -35,8 +35,8 @@ data "aws_iam_policy_document" "ecr-policy-doc" {
   }
 }
 
-resource "aws_ecr_lifecycle_policy" "keep-last-N" {
-  repository = "${aws_ecr_repository.ecr-repo.id}"
+resource "aws_ecr_lifecycle_policy" "keep_last_N" {
+  repository = "${aws_ecr_repository.ecr_repo.id}"
 
   policy = <<EOF
   {
@@ -47,7 +47,7 @@ resource "aws_ecr_lifecycle_policy" "keep-last-N" {
             "selection": {
                 "tagStatus": "any",
                 "countType": "imageCountMoreThan",
-                "countNumber": ${var.lifecycle_count_number}
+                "countNumber": ${var.max_images_retained}
             },
             "action": {
                 "type": "expire"
