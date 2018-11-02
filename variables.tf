@@ -20,5 +20,4 @@ variable "tags" {
 variable "trusted_accounts" {
   description = "IDs of other accounts that are trusted to pull and push to this repostitory"
   type        = "list"
-  default     = []
 }
