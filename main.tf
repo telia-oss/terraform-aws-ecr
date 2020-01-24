@@ -3,24 +3,23 @@
 # ------------------------------------------------------------------------------
 
 resource "aws_ecr_repository" "ecr_repo" {
-  name = "${var.name_prefix}"
+  name = var.name_prefix
 }
 
 resource "aws_ecr_repository_policy" "ecr_policy" {
-  repository = "${aws_ecr_repository.ecr_repo.id}"
-  policy     = "${data.aws_iam_policy_document.ecr_policy_doc.json}"
+  repository = aws_ecr_repository.ecr_repo.id
+  policy     = data.aws_iam_policy_document.ecr_policy_doc.json
 }
 
 data "aws_iam_policy_document" "ecr_policy_doc" {
-  "statement" {
+
+  statement {
     effect = "Allow"
 
     principals {
       type = "AWS"
 
-      identifiers = [
-        "${formatlist("arn:aws:iam::%s:root", var.trusted_accounts)}",
-      ]
+      identifiers = formatlist("arn:aws:iam::%s:root", var.trusted_accounts)
     }
 
     actions = [
@@ -36,7 +35,7 @@ data "aws_iam_policy_document" "ecr_policy_doc" {
 }
 
 resource "aws_ecr_lifecycle_policy" "keep_last_N" {
-  repository = "${aws_ecr_repository.ecr_repo.id}"
+  repository = aws_ecr_repository.ecr_repo.id
 
   policy = <<EOF
   {
