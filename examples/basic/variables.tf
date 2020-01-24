@@ -1,6 +1,6 @@
 variable "name_prefix" {
   type    = string
-  default = "module-basic-example"
+  default = "ecr-basic-example"
 }
 
 variable "region" {

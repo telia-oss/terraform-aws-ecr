@@ -8,15 +8,11 @@ import (
 )
 
 // Expectations for the test suite.
-type Expectations struct {
-	NamePrefix string
-}
+type Expectations struct{}
 
 // RunTestSuite for the module.
-func RunTestSuite(t *testing.T, region, namePrefix string, expected Expectations) {
-	if expected.NamePrefix != namePrefix {
-		t.Fatalf("expected: %s, got: %s", expected.NamePrefix, namePrefix)
-	}
+func RunTestSuite(t *testing.T, region string, expected Expectations) {
+	_ = NewSession(t, region)
 }
 
 // NewSession for AWS.
