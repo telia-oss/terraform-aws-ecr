@@ -4,10 +4,12 @@
 
 variable "name_prefix" {
   description = "A prefix used for naming resources."
+  type        = string
 }
 
 variable "max_images_retained" {
   description = "The max number of images to keep in the repository before expiring the oldest"
+  type        = number
   default     = 100
 }
 
