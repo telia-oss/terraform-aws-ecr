@@ -19,7 +19,7 @@ data "aws_iam_policy_document" "ecr_policy_doc" {
     principals {
       type = "AWS"
 
-      identifiers = "${formatlist("arn:aws:iam::%s:root", var.trusted_accounts)}"
+      identifiers = formatlist("arn:aws:iam::%s:root", var.trusted_accounts)
     }
 
     actions = [
