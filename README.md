@@ -1,6 +1,6 @@
 ## ECR Module
 
-[![Build Status](https://travis-ci.com/telia-oss/terraform-aws-ecr.svg?branch=master)](https://travis-ci.com/telia-oss/terraform-aws-ecr)
+[![workflow](https://github.com/telia-oss/terraform-aws-ecr/workflows/workflow/badge.svg)](https://github.com/telia-oss/terraform-aws-ecr/actions)
 
 This module creates a repository on ECR (and associated policies) that other accounts can be given push and pull access to.
 
