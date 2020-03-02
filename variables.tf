@@ -23,3 +23,15 @@ variable "tags" {
   type        = map
   default     = {}
 }
+
+variable "image_tag_mutability" {
+  description = "The tag mutability setting for the repository"
+  type        = bool
+  default     = true
+}
+
+variable "enable_scan_on_push" {
+  description = "Enable vulnarability scanning on image push"
+  type        = bool
+  default     = true
+}
