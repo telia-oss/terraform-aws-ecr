@@ -15,12 +15,12 @@ variable "max_images_retained" {
 
 variable "trusted_accounts" {
   description = "IDs of other accounts that are trusted to pull and push to this repostitory"
-  type        = list
+  type        = list(any)
 }
 
 variable "tags" {
   description = "A map of tags (key-value pairs) passed to resources."
-  type        = map
+  type        = map(any)
   default     = {}
 }
 
